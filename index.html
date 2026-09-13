@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07101f" />
+  <title>Hind's Week of Light</title>
+  <meta name="description" content="Eight little moments of support for Hind's exam week." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/experience/styles.css" />
+</head>
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <main>
+    <section class="welcome" id="welcome">
+      <p class="eyebrow">13 — 20 September · Eight days made for you</p>
+      <h1>Hind’s Week<br><em>of Light</em></h1>
+      <p class="intro">No replies. No pressure. Just one small place each day to remind you that you are loved, believed in, and never alone.</p>
+      <button class="primary" id="enter">Begin your week <span>→</span></button>
+      <p class="from">Made with love, from Musfiqur</p>
+    </section>
+
+    <section class="journey hidden" id="journey">
+      <header class="topbar">
+        <div><span class="mark">H</span><span>Week of Light</span></div>
+        <button class="sound" id="sound" aria-label="Toggle ambient sound">♪</button>
+      </header>
+
+      <div class="hero">
+        <div>
+          <p class="eyebrow">Your exam-week sanctuary</p>
+          <h2>One day. One surprise.<br><em>Always beside you.</em></h2>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-copy"><span id="progressText">0 of 8 opened</span><span id="progressPercent">0%</span></div>
+          <div class="progress"><i id="progressBar"></i></div>
+        </div>
+      </div>
+
+      <div class="days" id="days"></div>
+      <footer>May Allah place calm in your heart, clarity in your mind, and barakah in every answer. آمين</footer>
+    </section>
+  </main>
+
+  <dialog id="experience">
+    <button class="close" id="close" aria-label="Close">×</button>
+    <div id="experienceContent"></div>
+  </dialog>
+
+  <template id="closing">
+    <section class="day-closing">
+      <span class="closing-star">✦</span>
+      <p class="eyebrow">Before you return to your books</p>
+      <h4>You do not have to reply.<br>I’m simply here.</h4>
+      <div class="dua-card"><small>Today’s dua for you</small><p>May Allah make what feels difficult become easy, strengthen your memory, settle your heart, and place success and barakah in every effort you make. Ameen.</p></div>
+      <p class="signature">Always believing in you — Musfiqur</p>
+    </section>
+  </template>
+
+  <template id="survival">
+    <div class="experience-head"><p>Day One</p><h3>Your Survival Kit</h3><span>Tap each item to unpack it</span></div>
+    <div class="kit-grid">
+      <button data-reveal="For the late-night chapters">☕<b>Warmth</b></button>
+      <button data-reveal="For every thought you master">📚<b>Focus</b></button>
+      <button data-reveal="For the strength already inside you">✨<b>Courage</b></button>
+      <button data-reveal="For the breaks you deserve">🍫<b>Comfort</b></button>
+      <button data-reveal="For every tiny victory">🌹<b>Pride</b></button>
+      <button data-reveal="For all the love crossing the distance">💛<b>Me</b></button>
+    </div><div class="reveal-line" id="revealLine">Your kit is waiting…</div>
+  </template>
+
+  <template id="arcade">
+    <div class="experience-head"><p>Day Two</p><h3>Hind’s Focus Game</h3><span>Collect 7 golden stars before time runs out</span></div>
+    <div class="game"><div class="game-stats"><b>Stars <span id="score">0</span>/7</b><b>Time <span id="timer">20</span>s</b></div><div class="game-board" id="gameBoard"><button id="startGame">Start</button></div></div>
+  </template>
+
+  <template id="museum">
+    <div class="experience-head"><p>Day Three</p><h3>The Gallery of Her Mind</h3><span>Four rooms. One extraordinary woman.</span></div>
+    <div class="museum">
+      <button class="gallery-card" data-room="The Discipline Room" data-copy="Every hour you choose your future over comfort becomes part of the woman you are becoming."><span>01</span><b>Discipline</b></button>
+      <button class="gallery-card" data-room="The Brilliant Mind" data-copy="Your intelligence is more than grades—it is the way you keep learning, questioning, and growing."><span>02</span><b>Brilliance</b></button>
+      <button class="gallery-card" data-room="The Courage Hall" data-copy="Stress may visit, but it never gets to decide who you are or how your story ends."><span>03</span><b>Courage</b></button>
+      <button class="gallery-card" data-room="The Future Wing" data-copy="One day you will look back at this week and realize it was another bridge you crossed beautifully."><span>04</span><b>Future</b></button>
+    </div><div class="museum-plaque" id="plaque"><b>Select a gallery</b><p>Your private exhibition is ready.</p></div>
+  </template>
+
+  <template id="cafe">
+    <div class="experience-head"><p>Day Four</p><h3>Study Beside Me</h3><span>A quiet café where distance cannot enter</span></div>
+    <div class="focus-scene"><div class="rain"></div><div class="two-seats"><div><span>H</span><small>Sana’a</small></div><i>♡</i><div><span>M</span><small>New York</small></div></div><div class="focus-clock" id="focusClock">05:00</div><button class="primary small" id="focusStart">Start our quiet five minutes</button></div>
+  </template>
+
+  <template id="future">
+    <div class="experience-head"><p>Day Five</p><h3>Build Your Tomorrow</h3><span>Move through every chapter of the future</span></div>
+    <div class="future-track"><div class="future-fill" id="futureFill"></div><button data-stage="0">Books</button><button data-stage="1">Exam</button><button data-stage="2">Graduation</button><button data-stage="3">Dream career</button><button data-stage="4">Our future</button></div><div class="future-card" id="futureCard"><span>01</span><h4>Today’s pages</h4><p>Every page is quietly building something beautiful.</p></div>
+  </template>
+
+  <template id="sky">
+    <div class="experience-head"><p>Day Six · Jumu’ah</p><h3>A Sky Full of Duas</h3><span>Touch the darkness and fill it with light</span></div>
+    <div class="dua-sky" id="duaSky"><p id="duaPrompt">Tap anywhere to place a star</p></div>
+  </template>
+
+  <template id="battle">
+    <div class="experience-head"><p>Day Seven</p><h3>The Final Boss</h3><span>Choose your power and defeat exam stress</span></div>
+    <div class="battle"><div class="boss"><div class="boss-face">STRESS</div><div class="health"><i id="health"></i></div></div><div class="powers"><button data-hit="34">Focus</button><button data-hit="26">Tawakkul</button><button data-hit="22">Rest</button><button data-hit="30">Confidence</button></div><p id="battleText">Stress looks big. Your strength is bigger.</p></div>
+  </template>
+
+  <template id="finale">
+    <div class="experience-head"><p>Day Eight · The Finale</p><h3>The Night She Did It</h3><span>Your celebration begins now</span></div>
+    <div class="finale"><div class="curtain left"></div><div class="curtain right"></div><div class="award"><span>✦</span><p>The 2026 Award for</p><h4>Queen of Never Giving Up</h4><small>Presented to Hind — the woman Musfiqur never stopped believing in.</small></div><button class="primary small" id="celebrate">Celebrate her</button><div class="confetti" id="confetti"></div></div>
+  </template>
+
+  <script src="/experience/app.js"></script>
+</body>
+</html>
